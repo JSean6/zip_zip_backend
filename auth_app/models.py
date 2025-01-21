@@ -62,10 +62,12 @@ class GroceryShoppingErrands(models.Model):
     orders = models.CharField(max_length=150)
     deliveryAddress = models.CharField(max_length=100)
     clientPhoneNumber = models.IntegerField()
+    pickupPersonPhoneNumber = models.IntegerField(null=True)
     receiverFullName = models.CharField(max_length=100)
     
+    
     def __str__(self):
-        return self.errandDescription
+        return self.shop
 
 
 
