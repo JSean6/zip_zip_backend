@@ -182,39 +182,18 @@ class ContactDetailView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     permission_classes = [IsAuthenticated]
 
-# class SaveTransactionView(generics.ListCreateAPIView):
-#     queryset = TicketTransaction.objects.all()
-#     serializer_class = TicketTransactionSerializer
-#     permission_classes = [AllowAny]
+class SentErrandsListCreateView(generics.ListCreateAPIView):
+    queryset = SentErrands.objects.all()
+    serializer_class = SentErrandsSerializer
+    permission_classes = [AllowAny]
 
+class CustomErrandsListCreateView(generics.ListCreateAPIView):
+    queryset = CustomErrands.objects.all()
+    serializer_class = CustomErrandsSerializer
+    permission_classes = [AllowAny]
 
-from django.core.mail import send_mail
-from django.core.mail import send_mail
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-
-# @csrf_exempt
-# def send_receipt_email(request):
-#     if request.method == 'POST':
-#         data = json.loads(request.body)
-#         email = data.get('email')
-#         receipt = data.get('receipt')
-        
-#         subject = 'Your Ticket Purchase Receipt'
-#         message = (
-#             f"personnel Title: {receipt['title']}\n"
-#             f"Category: {receipt['category']}\n"
-#             f"Venue: {receipt['venue']}\n"
-#             f"Duration: {receipt['duration']}\n"
-#             f"Name: {receipt['name']}\n"
-#             f"Email: {receipt['email']}\n"
-#             f"Number of Tickets: {receipt['number_of_tickets']}\n"
-#             f"Total Price: Ksh.{receipt['totalPrice']}\n"
-#             f"Date: {receipt['date']}\n"
-#         )
-#         send_mail(subject, message, 'seannjoroge54@gmail.com', [email], fail_silently=False)
-
-#         return JsonResponse({'status': 'success', 'message': 'Email sent successfully'})
-#     return JsonResponse({'status': 'fail', 'message': 'Invalid request method'})
+class GroceryShoppingErrandsCreateView(generics.ListCreateAPIView):
+    queryset = GroceryShoppingErrands.objects.all()
+    serializer_class = GroceryShoppingErrandsSerializer
+    permission_classes = [AllowAny]
 

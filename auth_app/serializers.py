@@ -93,3 +93,22 @@ class ContactsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contacts
         fields = '__all__'
+
+class SentErrandsSerializer(serializers.ModelSerializer):
+     
+     class Meta:
+        model = SentErrands
+        fields = '__all__'
+
+class CustomErrandsSerializer(serializers.ModelSerializer):
+     
+     class Meta:
+        model = CustomErrands
+        fields = '__all__'
+
+class GroceryShoppingErrandsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = GroceryShoppingErrands
+        fields = '__all__'
+

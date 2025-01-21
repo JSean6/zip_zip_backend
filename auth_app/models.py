@@ -2,7 +2,6 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
-import cloudinary.uploader
 from cloudinary.models import CloudinaryField
 
 class CustomUser(AbstractUser):
@@ -24,11 +23,11 @@ class Personnel(models.Model):
     emailAddress = models.EmailField()
     dateJoined = models.DateField()
     averageRating = models.IntegerField(null=True)
-    uniformColor = models.CharField(max_length=100, null=True)
-    workPermit = models.IntegerField(null=True)
+    uniformColor = models.CharField(null=True)
+    workPermit = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return self.title
+        return self.id
     
 class Contacts(models.Model):
     name = models.CharField(max_length=100)
@@ -38,10 +37,35 @@ class Contacts(models.Model):
     def __str__(self):
         return self.name
 
-
-
-
-
+class SentErrands(models.Model):
+    eatery = models.CharField(max_length=100)
+    foodChoices = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    clientPhoneNumber = models.IntegerField()
+    receiverFullName = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.eatery
+    
+class CustomErrands(models.Model):
+    errandDescription = models.CharField(max_length=100)
+    pickupAddress = models.CharField(max_length=100)
+    dropOffAddress = models.CharField(max_length=100)
+    clientPhoneNumber = models.IntegerField()
+    receiverFullName = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.errandDescription
+    
+class GroceryShoppingErrands(models.Model):
+    shop = models.CharField(max_length=100)
+    orders = models.CharField(max_length=150)
+    deliveryAddress = models.CharField(max_length=100)
+    clientPhoneNumber = models.IntegerField()
+    receiverFullName = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.errandDescription
 
 
 
